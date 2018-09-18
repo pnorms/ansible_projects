@@ -1,9 +1,11 @@
----
-- name: ensure file exists
-  copy:
-    content: ""
-    dest: /tmp/ansibleTest.txt
-    force: no
-    group: sys
-    owner: root
-    mode: 0555
+- name: File Testing
+  hosts: all
+  tasks:
+  - name: ensure file exists
+    copy:
+      content: ""
+      dest: /tmp/ansibleTest.txt
+      force: no
+      group: sys
+      owner: root
+      mode: 0555
