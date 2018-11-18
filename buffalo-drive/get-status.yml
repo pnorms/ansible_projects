@@ -4,9 +4,8 @@
       uri:
         url: http://{{ server }}
         return_content: yes
-        register: webpage
       register: out
-      failed_when: '"Buffalo" not in webpage.content'
+      failed_when: '"Buffalo" not in out.content'
 
     - debug:
         msg: out.stdout
