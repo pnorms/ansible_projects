@@ -4,7 +4,7 @@
       shell: grep "received" "/Users/thenormans/Buffalo/Pat/Pats_Documents/Sync/`date '+%Y%m%d'`.log"
       register: out_pat
       ignore_errors: yes
-      failed_when: "received" not in out_pat.stdout or out_pat.rc >= 1
+      failed_when: out_pat.rc >= 1
 
     - debug:
         msg: out_pat.stdout
@@ -13,7 +13,7 @@
       shell: grep "received" "/Users/thenormans/Buffalo/Julie/Julie_Documents/Sync/`date '+%Y%m%d'`.log"
       register: out_julie
       ignore_errors: yes
-      failed_when: "received" not in out_julie.stdout or out_julie.rc >= 1
+      failed_when: out_julie.rc >= 1
 
     - debug:
         msg: out_julie.stdout
