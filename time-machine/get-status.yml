@@ -5,7 +5,6 @@
       register: out
       failed_when: '"Backup completed successfully" not in out.stdout_lines'
 
-    - debug: var=out.stdout_lines
+    - debug:
+        msg: out.stdout_lines
 
-    - set_fact:
-        output: "{{ out.stdout_lines }}"
