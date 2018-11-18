@@ -5,7 +5,7 @@
         url: http://{{ server }}
         return_content: yes
       register: out
-      failed_when: '"Buffalo" not in out.content'
+      failed_when: '"BUFFALO" not in out.content'
 
     - debug:
         msg: out.stdout
