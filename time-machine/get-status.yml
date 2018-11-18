@@ -1,10 +1,15 @@
 - hosts: all
   tasks:
     - name: Get TimeMachine Last Result
-      shell: /usr/bin/syslog -F '$Time $Message' -k Sender com.apple.backupd -k Time ge -59m | tail -n 3
+      shell: /usr/bin/syslog -F '$Time $Message' -k Sender com.apple.backupd -k Time ge -59m | tail -n 10
       register: out
+      failed_when: '"Backup verification passed" not in out.stdout_lines'
 
-    - debug: var=out.stdout_lines
+    - name: mail result
+      mail:
+        to: pnorms@gmail.com
+        subject: "TimeMachine Status {{ ansible_hostname }}"
+        body: "{{ item }}"
+      with_items: "{{ out.results|map(attribute='stdout_lines')|list }}"
+      when: out.stdout
 
-    - set_fact:
-        string_to_echo: "{{ out.stdout_lines }}"
