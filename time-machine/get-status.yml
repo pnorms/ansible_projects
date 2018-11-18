@@ -3,8 +3,8 @@
     - name: Get TimeMachine Last Result
       shell: /usr/bin/syslog -F '$Time $Message' -k Sender com.apple.backupd -k Time ge -59m | tail -n 10
       register: out
-      failed_when: '"Backup completed successfully" not in out.stdout_lines'
+      failed_when: '"Backup completed successfully" not in out.stdout'
 
     - debug:
-        msg: out.stdout_lines
+        msg: out.stdout
 
