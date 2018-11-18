@@ -7,4 +7,4 @@
     - debug: var=out.stdout_lines
 
     - set_fact:
-      string_to_echo: "{{ out.stdout_lines }}"
+        string_to_echo: "{{ out.stdout_lines }}"
