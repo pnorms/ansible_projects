@@ -1,0 +1,13 @@
+- hosts: all
+  tasks:
+    - name: Make Sure Buffalo Drive Is Up
+      uri:
+        url: http://{{ server }}
+        return_content: yes
+        register: webpage
+      register: out
+      failed_when: '"Buffalo" not in webpage.content'
+
+    - debug:
+        msg: out.stdout
+
