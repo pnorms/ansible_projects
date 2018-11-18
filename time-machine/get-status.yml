@@ -1,7 +1,7 @@
 - hosts: all
   tasks:
     - name: Get TimeMachine Last Result
-      command: /usr/bin/syslog -F '$Time $Message' -k Sender com.apple.backupd -k Time ge -59m | tail -n 3
+      shell: /usr/bin/syslog -F '$Time $Message' -k Sender com.apple.backupd -k Time ge -59m | tail -n 3
       register: out
 
     - debug: var=out.stdout_lines
