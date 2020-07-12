@@ -1,0 +1,8 @@
+- hosts: all
+  tasks:
+    - name: Get Boating Dates
+      shell: pwsh ~/scripts/when_to_fish.ps1
+      register: out
+
+    - debug:
+        msg: out.stdout
