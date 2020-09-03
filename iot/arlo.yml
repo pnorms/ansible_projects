@@ -1,0 +1,8 @@
+- hosts: all
+  tasks:
+    - name: Check Mode
+      shell: pwsh ~/scripts/arlo_check_mode.ps1
+      register: out
+
+    - debug:
+        msg: out.stdout
