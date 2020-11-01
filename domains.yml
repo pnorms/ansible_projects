@@ -1,8 +1,0 @@
-- hosts: all
-  tasks:
-    - name: Daily Domains Check
-      shell: pwsh ~/scripts/domains/daily-check.ps1
-      register: out
-
-    - debug:
-        msg: out.stdout
